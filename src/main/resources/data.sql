@@ -1,0 +1,5 @@
+INSERT INTO TBL_EXCHANGE_RATE  (currency, amount) VALUES ('GBP', 0.21);
+INSERT INTO TBL_EXCHANGE_RATE  (currency, amount) VALUES ('USD', 0.27);
+INSERT INTO TBL_EXCHANGE_RATE  (currency, amount) VALUES ('EUR', 0.25);
+INSERT INTO TBL_EXCHANGE_RATE  (currency, amount) VALUES ('MEX', 4.56);
+INSERT INTO TBL_EXCHANGE_RATE  (currency, amount) VALUES ('COL', 1062.71);
