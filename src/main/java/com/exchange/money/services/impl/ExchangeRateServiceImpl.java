@@ -1,14 +1,14 @@
 package com.exchange.money.services.impl;
 
-import com.exchange.money.models.dto.ExchangeRateRequest;
-import com.exchange.money.models.dto.ExchangeRateResponse;
-import com.exchange.money.models.dto.UpdateAmountRequest;
-import com.exchange.money.models.dto.UpdateAmountResponse;
+import com.exchange.money.models.dto.*;
 import com.exchange.money.models.entity.ExchangeRate;
 import com.exchange.money.repository.ExchangeRateRepositories;
 import com.exchange.money.services.ExchangeRateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ExchangeRateServiceImpl implements ExchangeRateService {
@@ -52,5 +52,18 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
                 .orElseThrow(() -> {
                     throw new RuntimeException("No se encontró tipo de cambio para la moneda de destino: " + updateAmountRequest.getCurrency());
                 });
+    }
+
+    @Override
+    public List<CurrencyResponse> currencys() {
+        return exchangeRateRepositories.findAll()
+                .stream()
+                .map(cu -> {
+                    return CurrencyResponse.builder()
+                            .id(cu.getId())
+                            .currency(cu.getCurrency())
+                            .build();
+                })
+                .collect(Collectors.toList());
     }
 }

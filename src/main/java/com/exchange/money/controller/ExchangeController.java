@@ -1,17 +1,13 @@
 package com.exchange.money.controller;
 
-import com.exchange.money.models.dto.ExchangeRateRequest;
-import com.exchange.money.models.dto.ExchangeRateResponse;
-import com.exchange.money.models.dto.UpdateAmountRequest;
-import com.exchange.money.models.dto.UpdateAmountResponse;
+import com.exchange.money.models.dto.*;
 import com.exchange.money.services.ExchangeRateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/exchange")
@@ -28,5 +24,10 @@ public class ExchangeController {
     @PostMapping("/update")
     public ResponseEntity<UpdateAmountResponse> updateCurrency (@RequestBody UpdateAmountRequest updateAmountRequest) {
         return new ResponseEntity<>(exchangeRateService.updateAmount(updateAmountRequest), HttpStatus.OK);
+    }
+
+    @GetMapping("/currency")
+    public ResponseEntity<List<CurrencyResponse>> listCurrencys () {
+        return new ResponseEntity<>(exchangeRateService.currencys(), HttpStatus.OK);
     }
 }
