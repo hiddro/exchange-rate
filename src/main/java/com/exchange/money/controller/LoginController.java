@@ -3,11 +3,13 @@ package com.exchange.money.controller;
 import com.exchange.money.models.dto.User;
 import com.exchange.money.security.JWTAuthtenticationConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class LoginController {
 
     @Autowired

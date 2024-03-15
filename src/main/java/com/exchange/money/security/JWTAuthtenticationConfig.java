@@ -29,7 +29,7 @@ public class JWTAuthtenticationConfig {
                 .setExpiration(new Date(System.currentTimeMillis() + Constants.TOKEN_EXPIRATION_TIME))
                 .signWith(Constants.getSigningKey(Constants.SUPER_SECRET_KEY),  SignatureAlgorithm.HS512).compact();
 
-        return "Bearer " + token;
+        return token;
     }
 
 }
